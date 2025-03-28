@@ -1,8 +1,7 @@
 package commands;
 
-import Exceptions.CommandNotFoundException;
+import exceptions.CommandNotFoundException;
 
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 

@@ -1,7 +1,7 @@
-package util.WriteToFile;
+package util.writeToFile;
 
 
-import util.ErrorLog.ErrorLogger;
+import util.errorLog.ErrorLogger;
 
 import java.io.File;
 import java.io.FileWriter;

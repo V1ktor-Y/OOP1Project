@@ -1,8 +1,6 @@
-import Exceptions.CommandNotFoundException;
+import exceptions.CommandNotFoundException;
 import commands.CLI;
-import util.ErrorLog.ErrorLogger;
-
-import java.util.Calendar;
+import util.errorLog.ErrorLogger;
 
 public class App {
     public static void main(String[] args) {

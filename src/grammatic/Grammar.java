@@ -1,28 +1,30 @@
 package grammatic;
 
-import Exceptions.InvalidCharacterError;
+import exceptions.InvalidCharacterException;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Grammar {
-    private final List<Rule> rules;
-    private final Alphabet terminalSymbols;
-    private final Alphabet nonterminalSymbols;
+    private final List<Rule> RULES;
+    private final Alphabet TERMINAL_SYMBOLS;
+    private final Alphabet NONTERMINAL_SYMBOLS;
+    private final String ORIGINAL_FILE;
 
-    public Grammar() {
-        rules = new ArrayList<>();
-        terminalSymbols = new Alphabet();
-        nonterminalSymbols = new Alphabet();
+    public Grammar(String originalFilePath) {
+        ORIGINAL_FILE = originalFilePath;
+        RULES = new ArrayList<>();
+        TERMINAL_SYMBOLS = new Alphabet();
+        NONTERMINAL_SYMBOLS = new Alphabet();
     }
 
     public void addRule(String rule){
-        rules.add(new Rule(rule));
+        RULES.add(new Rule(rule));
     }
 
-    public boolean addSymbolToAlphabet(Character c) throws InvalidCharacterError {
-        if(Character.isLowerCase(c)) return terminalSymbols.addSymbol(c);
-        else if(Character.isUpperCase(c)) return nonterminalSymbols.addSymbol(c);
-        else throw new InvalidCharacterError("Character is not a supported symbol");
+    public boolean addSymbolToAlphabet(Character c) throws InvalidCharacterException {
+        if(Character.isLowerCase(c)) return TERMINAL_SYMBOLS.addSymbol(c);
+        else if(Character.isUpperCase(c)) return NONTERMINAL_SYMBOLS.addSymbol(c);
+        else throw new InvalidCharacterException("Character is not a supported symbol");
     }
 }

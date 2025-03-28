@@ -1,4 +1,4 @@
-package util.ErrorLog;
+package util.errorLog;
 
 
 import java.io.FileWriter;

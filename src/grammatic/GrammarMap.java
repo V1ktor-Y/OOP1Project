@@ -3,16 +3,19 @@ package grammatic;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Singleton that holds every currently loaded Grammar
+ */
 public class GrammarMap {
 
-    private Map<Integer,Grammar> grammarMap = new HashMap<>();
-
+    private final Map<Integer,Grammar> grammarMap = new HashMap<>();
+    private int idCounter;
     private static GrammarMap instance;
 
     private GrammarMap(){}
 
     public void addGrammar(Grammar grammar){
-        grammarMap.put(grammarMap.size(), grammar);
+        grammarMap.put(idCounter++, grammar);
     }
 
     public static GrammarMap getInstance() {
@@ -23,7 +26,7 @@ public class GrammarMap {
     }
 
     public String getAllIDs(){
-        StringBuilder sb = new StringBuilder("");
+        StringBuilder sb = new StringBuilder();
         for (Map.Entry<Integer,Grammar> entry : grammarMap.entrySet()){
             sb.append(entry.getKey());
             sb.append(", ");

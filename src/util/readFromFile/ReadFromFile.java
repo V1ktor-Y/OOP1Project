@@ -1,7 +1,7 @@
-package util.ReadFromFile;
+package util.readFromFile;
 
 
-import util.ErrorLog.ErrorLogger;
+import util.errorLog.ErrorLogger;
 
 import java.io.File;
 import java.io.IOException;
