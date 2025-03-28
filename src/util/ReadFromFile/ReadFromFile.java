@@ -9,20 +9,14 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 
 public class ReadFromFile {
-    private File filePath;
-    ErrorLogger logger = new ErrorLogger();
 
-    public ReadFromFile(String filePath) {
-        this.filePath = new File(filePath);
-    }
-
-    public String getAll(){
+    public static String getAll(String filePath){
         String content = "";
         try{
-            Path path = filePath.toPath();
+            Path path = new File(filePath).toPath();
             content =  Files.readString(path);
         }catch (IOException e){
-            logger.log(e);
+            ErrorLogger.log(e);
         }
 
         return content;

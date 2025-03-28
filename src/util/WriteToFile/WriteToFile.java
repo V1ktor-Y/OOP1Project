@@ -8,42 +8,14 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class WriteToFile {
-    private File filePath;
-    private FileWriter fileWriter;
-    private boolean append;
-    private ErrorLogger logger;
-
-    public WriteToFile(String path, boolean append){
-        this.append = append;
-        filePath = new File(path);
-        logger = new ErrorLogger();
+    public static void write(String path, boolean append, String s) {
         try {
-            fileWriter = new FileWriter(filePath, append);
-        }
-        catch (IOException e){
-            logger.log(e);
-            e.printStackTrace();
-        }
-    }
-
-    public void write(String s){
-        try{
+            FileWriter fileWriter = new FileWriter(new File(path), append);
             fileWriter.write(s);
             fileWriter.close();
-        }catch (IOException e){
-            logger.log(e);
+        } catch (IOException e) {
+            ErrorLogger.log(e);
         }
-    }
-
-    public void changeDestination(String newPath){
-        try {
-            fileWriter = new FileWriter(newPath, append);
-        }catch (IOException e) {
-            logger.log(e);
-        }
-    }
-
-    public void changeAppendMethod(boolean append){
-        this.append = append;
     }
 }
+
