@@ -3,12 +3,13 @@ package util.ErrorLog;
 
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Calendar;
 
 public class ErrorLogger {
-    public void log(Exception e) {
+    public static void log(Exception e) {
         try {
             FileWriter errorWriter = new FileWriter(".\\LocalErros.txt", true);
-            errorWriter.write("Error message:" + e.getMessage() + "\n");
+            errorWriter.write("[" + Calendar.getInstance().getTime() +"]" + e.getMessage() + "\n");
             errorWriter.close();
         } catch (IOException ioException) {
             System.out.println("Failed to Log error");

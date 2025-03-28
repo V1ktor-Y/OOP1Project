@@ -4,7 +4,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class GrammarMap {
+
     private Map<Integer,Grammar> grammarMap = new HashMap<>();
+
     private static GrammarMap instance;
 
     private GrammarMap(){}
@@ -24,6 +26,7 @@ public class GrammarMap {
         StringBuilder sb = new StringBuilder("");
         for (Map.Entry<Integer,Grammar> entry : grammarMap.entrySet()){
             sb.append(entry.getKey());
+            sb.append(", ");
         }
         return sb.toString();
     }
