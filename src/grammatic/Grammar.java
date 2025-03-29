@@ -39,4 +39,8 @@ public class Grammar {
     public Set<Rule> getRules(){
         return RULES;
     }
+
+    public String getOriginalFile(){
+        return ORIGINAL_FILE;
+    }
 }

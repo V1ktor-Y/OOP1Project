@@ -18,6 +18,11 @@ public class GrammarMap {
         grammarMap.put(idCounter++, grammar);
     }
 
+    public boolean removeGrammarByID(int id){
+        //remove returns the corresponding value if id is found
+        return grammarMap.remove(id) != null;
+    }
+
     public static GrammarMap getInstance() {
         if(instance == null){
             instance = new GrammarMap();
@@ -32,5 +37,9 @@ public class GrammarMap {
             sb.append(", ");
         }
         return sb.toString();
+    }
+
+    public Grammar getGrammarByID(int id){
+        return grammarMap.get(id);
     }
 }

@@ -17,7 +17,7 @@ public class Parser {
     public static Grammar readGrammarFromFile(String path) throws SerializationException, InvalidCharacterException {
         String text = ReadFromFile.getAll(path);
         Grammar grammar = new Grammar(path);
-        
+
         //0 removes trailing empty strings
         String[] lines = text.split(text,0);
 
@@ -40,7 +40,7 @@ public class Parser {
         return grammar;
     }
 
-    public static String grammarToString(Grammar grammar, String path){
+    public static String grammarToString(Grammar grammar){
         StringBuilder sb = new StringBuilder();
 
         for(Character c : grammar.getNonterminalSymbols().getSymbols()){

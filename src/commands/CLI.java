@@ -1,6 +1,8 @@
 package commands;
 
+import exceptions.CommandContextException;
 import exceptions.CommandNotFoundException;
+import util.errorLog.ErrorLogger;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -30,10 +32,20 @@ public class CLI {
         if(result == null) {
             throw new CommandNotFoundException("Command not found");
         }
+
         if(parsedInput.length < 2){
-            result.getCommand().performCommand("");
+            try{
+                result.getCommand().performCommand("");
+            }catch (Exception e){
+                ErrorLogger.log(e);
+            }
         }
-        result.getCommand().performCommand(parsedInput[1]);
+
+        try{
+            result.getCommand().performCommand(parsedInput[1]);
+        } catch (Exception e) {
+            ErrorLogger.log(e);
+        }
 
     }
 }

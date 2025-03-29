@@ -13,7 +13,7 @@ public class App {
         g.addSymbolToAlphabet('a');
         g.addRule(new Rule("A -> bB"));
         g.addRule(new Rule("B -> ab"));
-        WriteToFile.write(".\\test.cfg", false,  Parser.grammarToString(g,".\\test.cfg"));
+        WriteToFile.write(".\\test.cfg", false,  Parser.grammarToString(g));
         //CHECK IF INPUT IS EMPTY!
     }
 }
