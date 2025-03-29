@@ -7,4 +7,9 @@ public class CloseCommand implements Command {
     public void performCommand(String context) {
 
     }
+
+    @Override
+    public String getDesc() {
+        return "";
+    }
 }

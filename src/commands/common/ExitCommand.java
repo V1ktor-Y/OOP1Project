@@ -8,4 +8,9 @@ public class ExitCommand implements Command {
         System.out.println("Exiting");
         System.exit(0);
     }
+
+    @Override
+    public String getDesc() {
+        return "";
+    }
 }

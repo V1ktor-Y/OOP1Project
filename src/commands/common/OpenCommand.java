@@ -7,4 +7,9 @@ public class OpenCommand implements Command {
     public void performCommand(String context) {
 
     }
+
+    @Override
+    public String getDesc() {
+        return "";
+    }
 }
