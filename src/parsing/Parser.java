@@ -2,6 +2,7 @@ package parsing;
 
 import exceptions.SerializationException;
 import grammatic.Grammar;
+import grammatic.Rule;
 import util.readFromFile.ReadFromFile;
 
 public class Parser {
@@ -13,10 +14,24 @@ public class Parser {
         return grammar;
     }
 
-    public static String serializeGrammar(Grammar grammar, String path){
+    public static String grammarToString(Grammar grammar, String path){
         StringBuilder sb = new StringBuilder();
-        //Do the magic here
 
+        for(Character c : grammar.getNonterminalSymbols().getSymbols()){
+            sb.append(c + " ");
+        }
+
+        for(Character c : grammar.getTerminalSymbols().getSymbols()){
+            sb.append(c + " ");
+        }
+        sb.append(",\n");
+
+        for(Rule rule : grammar.getRules()){
+            sb.append(rule.getLeftSide())
+                    .append(" -> ")
+                    .append(rule.getRightSide())
+                    .append(",\n");
+        }
         return sb.toString();
     }
 }

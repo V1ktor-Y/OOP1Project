@@ -1,5 +1,7 @@
 package grammatic;
 
+import java.util.Arrays;
+
 public class Rule {
     private String leftSide;
     private String rightSide;
@@ -10,9 +12,10 @@ public class Rule {
     }
 
     public Rule(String string){
-        String[] sides = string.split("",3);
-        leftSide = sides[0];
-        rightSide = sides[2];
+        String[] sides = string.split("->",2);
+        leftSide = sides[0].trim();
+        rightSide = sides[1].trim();
+        System.out.println(Arrays.toString(sides));
     }
 
     public String getLeftSide() {

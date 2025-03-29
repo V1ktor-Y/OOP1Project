@@ -1,6 +1,8 @@
-package commands;
+package commands.common;
 
-public class ExitCommand implements Command{
+import commands.Command;
+
+public class ExitCommand implements Command {
     @Override
     public void performCommand(String context) {
         System.out.println("Exiting");

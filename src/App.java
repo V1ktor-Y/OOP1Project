@@ -1,16 +1,19 @@
-import exceptions.CommandNotFoundException;
-import commands.CLI;
-import util.errorLog.ErrorLogger;
+import exceptions.InvalidCharacterException;
+import grammatic.Grammar;
+import grammatic.Rule;
+import parsing.Parser;
+import util.writeToFile.WriteToFile;
 
 public class App {
-    public static void main(String[] args) {
-        try {
-
-        CLI.getInstance().performCommand("ExIt");
-        } catch (CommandNotFoundException e) {
-            ErrorLogger.log(e);
-        }
-
+    public static void main(String[] args) throws InvalidCharacterException {
+        Grammar g = new Grammar(".\\test.cfg");
+        g.addSymbolToAlphabet('A');
+        g.addSymbolToAlphabet('B');
+        g.addSymbolToAlphabet('b');
+        g.addSymbolToAlphabet('a');
+        g.addRule(new Rule("A -> bB"));
+        g.addRule(new Rule("B -> ab"));
+        WriteToFile.write(".\\test.cfg", false,  Parser.grammarToString(g,".\\test.cfg"));
         //CHECK IF INPUT IS EMPTY!
     }
 }
