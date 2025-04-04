@@ -42,4 +42,8 @@ public class GrammarMap {
     public Grammar getGrammarByID(int id){
         return grammarMap.get(id);
     }
+
+    public Map<Integer, Grammar> getGrammarMap() {
+        return grammarMap;
+    }
 }

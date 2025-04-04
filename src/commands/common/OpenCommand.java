@@ -2,13 +2,10 @@ package commands.common;
 
 import commands.Command;
 import exceptions.CommandContextException;
-import exceptions.InvalidCharacterException;
-import exceptions.SerializationException;
 import grammatic.GrammarMap;
 import parsing.Parser;
 import util.errorLog.ErrorLogger;
 
-import java.util.Objects;
 
 public class OpenCommand implements Command {
     @Override
@@ -24,6 +21,6 @@ public class OpenCommand implements Command {
 
     @Override
     public String getDesc() {
-        return "Reads a grammar from a .cfg file and adds it to the GrammarMap singleton's map";
+        return "open <filename>: \t\tReads a grammar from a .cfg file and adds it to the GrammarMap singleton's map";
     }
 }

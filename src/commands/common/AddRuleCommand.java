@@ -5,10 +5,9 @@ import exceptions.CommandContextException;
 import exceptions.GrammarNotFoundException;
 import grammatic.Grammar;
 import grammatic.GrammarMap;
-import parsing.Parser;
-import util.writeToFile.WriteToFile;
+import grammatic.Rule;
 
-public class SaveAsCommand implements Command {
+public class AddRuleCommand implements Command {
     @Override
     public void performCommand(String context) throws Exception {
         if (context.isEmpty()) throw new CommandContextException("Empty command context");
@@ -16,20 +15,16 @@ public class SaveAsCommand implements Command {
         String[] keyWords = context.split(" ", 2);
         if(keyWords.length < 2) throw new CommandContextException("Not enough context given");
 
-        //context is grammar ID
         int id = Integer.parseInt(keyWords[0]);
+        String rule = keyWords[1];
 
         Grammar grammar = GrammarMap.getInstance().getGrammarByID(id);
-        if(grammar == null) throw new GrammarNotFoundException("Could not find grammar with id " + id);
-
-        String path = keyWords[1];
-        WriteToFile.write(path,false, Parser.grammarToString(grammar));
-        
-        System.out.println("Saved grammar with id " + id + "to file " + path);
+        if(grammar == null) throw new GrammarNotFoundException("Failed to find grammar with id: " + id);
+        grammar.addRule(new Rule(rule));
     }
 
     @Override
     public String getDesc() {
-        return "saveas <id> <filename>: \t\tSaves grammar with he given id to the given path";
+        return "addrule <id> <rule>: \t\tAdds given rule to given grammar";
     }
 }

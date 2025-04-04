@@ -1,6 +1,7 @@
 package grammatic;
 
 import exceptions.InvalidCharacterException;
+import exceptions.RuleNotFoundException;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -38,6 +39,25 @@ public class Grammar {
 
     public Set<Rule> getRules(){
         return RULES;
+    }
+
+    /**
+     * Removes the Nth rule in a grammar, indexes begin at 0
+     * @param n Which rule should be removed
+     * @return
+     */
+    public boolean removeRule(int n) throws RuleNotFoundException {
+        Rule elem = null;
+        int counter = 0;
+        for(Rule rule : RULES){
+            if(counter == n) {
+                elem = rule;
+                break;
+            }
+            counter++;
+        }
+        if(elem == null) throw new RuleNotFoundException("Rule index not found");
+        return RULES.remove(elem);
     }
 
     public String getOriginalFile(){

@@ -27,6 +27,6 @@ public class SaveCommand implements Command {
 
     @Override
     public String getDesc() {
-        return "Saves grammar with the given id";
+        return "save <id>: \t\tSaves grammar with the given id to its original file";
     }
 }

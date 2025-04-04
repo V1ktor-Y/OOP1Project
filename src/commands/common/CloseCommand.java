@@ -22,6 +22,6 @@ public class CloseCommand implements Command {
 
     @Override
     public String getDesc() {
-        return "Removes the grammar with the given key(id) from the grammar map";
+        return "close <id>: \t\tRemoves the grammar with the given key(id) from the grammar map";
     }
 }

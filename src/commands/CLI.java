@@ -25,6 +25,10 @@ public class CLI {
         return instance;
     }
 
+    public Map<String, CommandType> getCommandMap() {
+        return commandMap;
+    }
+
     public void performCommand(String input) throws CommandNotFoundException {
         String[] parsedInput = input.split(" ", 2);
         parsedInput[0] = parsedInput[0].toLowerCase();
