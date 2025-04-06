@@ -15,6 +15,8 @@ public class CLI {
         commandMap.put("exit", CommandType.EXIT);
         commandMap.put("open", CommandType.OPEN);
         commandMap.put("close", CommandType.CLOSE);
+
+        commandMap.put("print", CommandType.PRINT);
         //put all future commands here
     }
 

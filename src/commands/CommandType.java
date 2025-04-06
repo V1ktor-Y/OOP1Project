@@ -8,6 +8,7 @@ public enum CommandType {
     EXIT(new ExitCommand()),
     OPEN(new OpenCommand()),
     CLOSE(new CloseCommand()),
+    PRINT(new PrintCommand()),
     ;
     private Command command;
 

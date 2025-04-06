@@ -19,7 +19,7 @@ public class Parser {
         Grammar grammar = new Grammar(path);
 
         //0 removes trailing empty strings
-        String[] lines = text.split(text,0);
+        String[] lines = text.split(",\n",0);
 
         if(lines.length < 1) throw new SerializationException("Could not find grammar");
 
@@ -34,7 +34,7 @@ public class Parser {
 
         for(int i = 1; i < lines.length; i++){
 
-            grammar.addRule(new Rule(lines[i]));
+            grammar.addRule(new Rule(lines[i].trim()));
         }
 
         return grammar;

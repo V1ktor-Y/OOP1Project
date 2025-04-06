@@ -8,7 +8,7 @@ import java.util.Map;
  */
 public class GrammarMap {
 
-    private final Map<Integer,Grammar> grammarMap = new HashMap<>();
+    private Map<Integer,Grammar> grammarMap = new HashMap<>();
     private int idCounter;
     private static GrammarMap instance;
 

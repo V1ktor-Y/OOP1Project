@@ -1,6 +1,5 @@
-package commands.common;
+package commands;
 
-import commands.Command;
 import exceptions.CommandContextException;
 import exceptions.GrammarNotFoundException;
 import exceptions.RuleNotFoundException;

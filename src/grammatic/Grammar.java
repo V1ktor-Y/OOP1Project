@@ -44,7 +44,7 @@ public class Grammar {
     /**
      * Removes the Nth rule in a grammar, indexes begin at 0
      * @param n Which rule should be removed
-     * @return
+     * @return Whether the rule was successfully removed
      */
     public boolean removeRule(int n) throws RuleNotFoundException {
         Rule elem = null;

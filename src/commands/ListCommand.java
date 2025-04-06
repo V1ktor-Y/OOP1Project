@@ -1,6 +1,5 @@
-package commands.common;
+package commands;
 
-import commands.Command;
 import grammatic.Grammar;
 import grammatic.GrammarMap;
 

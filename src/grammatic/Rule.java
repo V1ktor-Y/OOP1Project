@@ -15,7 +15,6 @@ public class Rule {
         String[] sides = string.split("->",2);
         leftSide = sides[0].trim();
         rightSide = sides[1].trim();
-        System.out.println(Arrays.toString(sides));
     }
 
     public String getLeftSide() {
