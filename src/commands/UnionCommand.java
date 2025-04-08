@@ -4,7 +4,6 @@ import exceptions.CommandContextException;
 import exceptions.GrammarNotFoundException;
 import grammatic.Grammar;
 import grammatic.GrammarMap;
-import grammatic.Rule;
 
 public class UnionCommand implements Command{
 

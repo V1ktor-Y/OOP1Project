@@ -14,6 +14,10 @@ public class Alphabet {
         return symbols;
     }
 
+    public int size(){
+        return symbols.size();
+    }
+
     public void addAll(Set<Character> characters){
         symbols.addAll(characters);
     }
