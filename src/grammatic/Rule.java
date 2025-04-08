@@ -1,6 +1,7 @@
 package grammatic;
 
 import java.util.Arrays;
+import java.util.Objects;
 
 public class Rule {
     private String leftSide;
@@ -23,5 +24,17 @@ public class Rule {
 
     public String getRightSide() {
         return rightSide;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Rule rule = (Rule) o;
+        return Objects.equals(leftSide, rule.leftSide) && Objects.equals(rightSide, rule.rightSide);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(leftSide, rightSide);
     }
 }

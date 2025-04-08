@@ -30,6 +30,6 @@ public class RemoveRuleCommand implements Command {
 
     @Override
     public String getDesc() {
-        return "removerule <id> <rule id>: \t\tRemoves given rule from given grammar";
+        return "removerule <id> <rule id> - Removes given rule from given grammar";
     }
 }

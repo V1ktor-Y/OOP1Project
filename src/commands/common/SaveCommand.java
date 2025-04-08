@@ -3,6 +3,7 @@ package commands.common;
 import commands.Command;
 import exceptions.CommandContextException;
 import exceptions.GrammarNotFoundException;
+import exceptions.PathException;
 import grammatic.Grammar;
 import grammatic.GrammarMap;
 import parsing.Parser;
@@ -20,6 +21,8 @@ public class SaveCommand implements Command {
         if(grammar == null) throw new GrammarNotFoundException("Could not find grammar with id " + id);
 
         String path = grammar.getOriginalFile();
+
+        if(path.isEmpty()) throw new PathException("This grammar does not have a default path");
         WriteToFile.write(path,false, Parser.grammarToString(grammar));
 
         System.out.println("Saved grammar with id " + id + "to file " + path);
@@ -27,6 +30,6 @@ public class SaveCommand implements Command {
 
     @Override
     public String getDesc() {
-        return "save <id>: \t\tSaves grammar with the given id to its original file";
+        return "save <id> - Saves grammar with the given id to its original file";
     }
 }

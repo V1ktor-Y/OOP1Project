@@ -20,6 +20,6 @@ public class ListCommand implements Command {
 
     @Override
     public String getDesc() {
-        return "list: \t\tList every loaded grammar's id";
+        return "list - List every loaded grammar's id";
     }
 }

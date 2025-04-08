@@ -21,6 +21,6 @@ public class OpenCommand implements Command {
 
     @Override
     public String getDesc() {
-        return "open <filename>: \t\tReads a grammar from a .cfg file and adds it to the GrammarMap singleton's map";
+        return "open <filename> - Reads a grammar from a .cfg file and adds it to the GrammarMap singleton's map";
     }
 }

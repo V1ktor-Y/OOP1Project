@@ -23,6 +23,6 @@ public class HelpCommand implements Command {
 
     @Override
     public String getDesc() {
-        return "help: \t\tPrints the description of every command";
+        return "help - Prints the description of every command";
     }
 }

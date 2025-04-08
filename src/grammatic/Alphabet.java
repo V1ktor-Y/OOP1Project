@@ -13,4 +13,8 @@ public class Alphabet {
     public Set<Character> getSymbols() {
         return symbols;
     }
+
+    public void addAll(Set<Character> characters){
+        symbols.addAll(characters);
+    }
 }

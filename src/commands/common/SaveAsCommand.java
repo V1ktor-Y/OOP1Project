@@ -30,6 +30,6 @@ public class SaveAsCommand implements Command {
 
     @Override
     public String getDesc() {
-        return "saveas <id> <filename>: \t\tSaves grammar with he given id to the given path";
+        return "saveas <id> <filename> - Saves grammar with he given id to the given path";
     }
 }

@@ -24,6 +24,6 @@ public class AddRuleCommand implements Command {
 
     @Override
     public String getDesc() {
-        return "addrule <id> <rule>: \t\tAdds given rule to given grammar";
+        return "addrule <id> <rule> - Adds given rule to given grammar";
     }
 }

@@ -11,6 +11,6 @@ public class ExitCommand implements Command {
 
     @Override
     public String getDesc() {
-        return "exit: \t\tExits the program";
+        return "exit - Exits the program";
     }
 }

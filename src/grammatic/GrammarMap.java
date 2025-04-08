@@ -14,8 +14,9 @@ public class GrammarMap {
 
     private GrammarMap(){}
 
-    public void addGrammar(Grammar grammar){
+    public int addGrammar(Grammar grammar){
         grammarMap.put(idCounter++, grammar);
+        return idCounter - 1;
     }
 
     public boolean removeGrammarByID(int id){
