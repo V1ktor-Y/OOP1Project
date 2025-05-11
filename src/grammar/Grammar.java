@@ -1,4 +1,4 @@
-package grammatic;
+package grammar;
 
 import exceptions.InvalidCharacterException;
 import exceptions.RuleNotFoundException;

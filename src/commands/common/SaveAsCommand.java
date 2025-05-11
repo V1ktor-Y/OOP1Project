@@ -3,8 +3,8 @@ package commands.common;
 import commands.Command;
 import exceptions.CommandContextException;
 import exceptions.GrammarNotFoundException;
-import grammatic.Grammar;
-import grammatic.GrammarMap;
+import grammar.Grammar;
+import grammar.GrammarMap;
 import parsing.Parser;
 import util.writeToFile.WriteToFile;
 

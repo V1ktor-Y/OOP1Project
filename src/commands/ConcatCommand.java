@@ -4,9 +4,9 @@ import exceptions.CommandContextException;
 import exceptions.GrammarNotFoundException;
 import grammar.Grammar;
 import grammar.GrammarMap;
-import grammar.Rule;
 
-public class UnionCommand implements Command {
+public class ConcatCommand implements Command{
+
     @Override
     public void performCommand(String context) throws Exception {
         if (context.isEmpty()) throw new CommandContextException("Empty command context");
@@ -18,8 +18,6 @@ public class UnionCommand implements Command {
         int id1 = Integer.parseInt(keyWords[0]);
         int id2 = Integer.parseInt(keyWords[1]);
 
-        if(id1 == id2)throw new CommandContextException("id1 must be different from id2");
-
         Grammar grammar1 = GrammarMap.getInstance().getGrammarByID(id1);
         if(grammar1 == null) throw new GrammarNotFoundException("Could not find grammar with id " + id1);
 
@@ -28,23 +26,15 @@ public class UnionCommand implements Command {
 
         Grammar newGrammar = new Grammar("");
 
-        for(Character c : grammar1.getTerminalSymbols().getSymbols()){
-            if(grammar2.getTerminalSymbols().contains(c)){
-                newGrammar.getTerminalSymbols().addSymbol(c);
-            }
-        }
-        for(Character c : grammar1.getNonterminalSymbols().getSymbols()){
-            if(grammar2.getNonterminalSymbols().contains(c)){
-                newGrammar.getNonterminalSymbols().addSymbol(c);
-            }
-        }
-
-        for(Rule r : grammar1.getRules()){
-            if(grammar2.getRules().contains(r)){
-                newGrammar.addRule(r);
-            }
-        }
-
+        //Add Alphabets from Grammar<id1>
+        newGrammar.getTerminalSymbols().addAll(grammar1.getTerminalSymbols().getSymbols());
+        newGrammar.getNonterminalSymbols().addAll(grammar1.getNonterminalSymbols().getSymbols());
+        //Add Alphabets from Grammar<id2>
+        newGrammar.getTerminalSymbols().addAll(grammar2.getTerminalSymbols().getSymbols());
+        newGrammar.getNonterminalSymbols().addAll(grammar2.getNonterminalSymbols().getSymbols());
+        //Add Rules from both grammars
+        newGrammar.getRules().addAll(grammar1.getRules());
+        newGrammar.getRules().addAll(grammar2.getRules());
 
         System.out.println("New grammar saved with id - " + GrammarMap.getInstance().addGrammar(newGrammar));
 
@@ -52,6 +42,6 @@ public class UnionCommand implements Command {
 
     @Override
     public String getDesc() {
-        return "union <id1> <id2> - Gets the union between two grammars and saves it to the grammar map";
+        return "concat <id1> <id2> - Gets the concatination between two grammars and saves it to the grammar map";
     }
 }

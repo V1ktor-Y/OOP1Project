@@ -3,8 +3,8 @@ package commands;
 import exceptions.CommandContextException;
 import exceptions.GrammarNotFoundException;
 import exceptions.RuleNotFoundException;
-import grammatic.Grammar;
-import grammatic.GrammarMap;
+import grammar.Grammar;
+import grammar.GrammarMap;
 import util.errorLog.ErrorLogger;
 
 public class RemoveRuleCommand implements Command {

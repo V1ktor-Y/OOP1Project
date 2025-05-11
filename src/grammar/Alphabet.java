@@ -1,9 +1,10 @@
-package grammatic;
+package grammar;
 
 import java.util.HashSet;
 import java.util.Set;
 
 public class Alphabet {
+    public static char EPSILON = 'Є';
     private Set<Character> symbols = new HashSet<>();
 
     public boolean addSymbol(Character c){
@@ -20,5 +21,9 @@ public class Alphabet {
 
     public void addAll(Set<Character> characters){
         symbols.addAll(characters);
+    }
+
+    public boolean contains(Character c){
+        return symbols.contains(c);
     }
 }

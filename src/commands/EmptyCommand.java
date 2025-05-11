@@ -2,8 +2,8 @@ package commands;
 
 import exceptions.CommandContextException;
 import exceptions.GrammarNotFoundException;
-import grammatic.Grammar;
-import grammatic.GrammarMap;
+import grammar.Grammar;
+import grammar.GrammarMap;
 
 public class EmptyCommand implements Command{
     @Override

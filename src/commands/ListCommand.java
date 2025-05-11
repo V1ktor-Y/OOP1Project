@@ -1,7 +1,7 @@
 package commands;
 
-import grammatic.Grammar;
-import grammatic.GrammarMap;
+import grammar.Grammar;
+import grammar.GrammarMap;
 
 import java.util.Map;
 

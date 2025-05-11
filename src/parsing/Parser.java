@@ -2,8 +2,8 @@ package parsing;
 
 import exceptions.InvalidCharacterException;
 import exceptions.SerializationException;
-import grammatic.Grammar;
-import grammatic.Rule;
+import grammar.Grammar;
+import grammar.Rule;
 import util.readFromFile.ReadFromFile;
 
 public class Parser {

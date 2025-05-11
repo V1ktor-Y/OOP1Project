@@ -3,7 +3,7 @@ package commands.common;
 import commands.Command;
 import exceptions.CommandContextException;
 import exceptions.GrammarNotFoundException;
-import grammatic.GrammarMap;
+import grammar.GrammarMap;
 
 public class CloseCommand implements Command {
     @Override

@@ -2,9 +2,9 @@ package commands;
 
 import exceptions.CommandContextException;
 import exceptions.GrammarNotFoundException;
-import grammatic.Grammar;
-import grammatic.GrammarMap;
-import grammatic.Rule;
+import grammar.Grammar;
+import grammar.GrammarMap;
+import grammar.Rule;
 
 public class AddRuleCommand implements Command {
     @Override

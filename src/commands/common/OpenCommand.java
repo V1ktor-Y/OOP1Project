@@ -2,7 +2,7 @@ package commands.common;
 
 import commands.Command;
 import exceptions.CommandContextException;
-import grammatic.GrammarMap;
+import grammar.GrammarMap;
 import parsing.Parser;
 import util.errorLog.ErrorLogger;
 
