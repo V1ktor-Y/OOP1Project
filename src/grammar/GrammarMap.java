@@ -12,6 +12,10 @@ public class GrammarMap {
     private int idCounter;
     private static GrammarMap instance;
 
+    public int getIdCounter() {
+        return idCounter;
+    }
+
     private GrammarMap(){}
 
     public int addGrammar(Grammar grammar){

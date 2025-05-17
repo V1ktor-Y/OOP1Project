@@ -4,7 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class Alphabet {
-    public static char EPSILON = 'Є';
+    public static final char EPSILON = 'Є';
     private Set<Character> symbols = new HashSet<>();
 
     public boolean addSymbol(Character c){

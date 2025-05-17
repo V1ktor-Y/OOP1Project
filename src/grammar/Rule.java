@@ -36,4 +36,9 @@ public class Rule {
     public int hashCode() {
         return Objects.hash(leftSide, rightSide);
     }
+
+    @Override
+    public String toString() {
+        return leftSide + " -> " + rightSide;
+    }
 }

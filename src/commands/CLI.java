@@ -1,6 +1,5 @@
 package commands;
 
-import exceptions.CommandContextException;
 import exceptions.CommandNotFoundException;
 import util.errorLog.ErrorLogger;
 
@@ -16,6 +15,7 @@ public class CLI {
         commandMap.put("open", CommandType.OPEN);
         commandMap.put("close", CommandType.CLOSE);
         commandMap.put("print", CommandType.PRINT);
+        commandMap.put("chomskify", CommandType.CHOMSKIFY);
         //put all future commands here
     }
 

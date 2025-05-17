@@ -29,6 +29,10 @@ public class Grammar {
         else throw new InvalidCharacterException("Character is not a supported symbol");
     }
 
+    public Alphabet getNonTerminalSymbols() {
+        return NONTERMINAL_SYMBOLS;
+    }
+
     public Alphabet getTerminalSymbols() {
         return TERMINAL_SYMBOLS;
     }
