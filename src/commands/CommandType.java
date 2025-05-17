@@ -9,8 +9,8 @@ public enum CommandType {
     OPEN(new OpenCommand()),
     CLOSE(new CloseCommand()),
     PRINT(new PrintCommand()),
-    CHOMSKIFY(new ChomskifyCommand())
-    ;
+    CHOMSKIFY(new ChomskifyCommand()),
+    CYK(new CYKCommand());
     private Command command;
 
     CommandType(Command command) {

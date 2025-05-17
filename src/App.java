@@ -22,9 +22,13 @@ public class App {
         //CHECK IF INPUT IS EMPTY!
         try{
             CLI.getInstance().performCommand("open test.cfg");
-            CLI.getInstance().performCommand("print 0");
+            //CLI.getInstance().performCommand("print 0");
+            //CLI.getInstance().performCommand("cyk 0 abaababaaa");
             CLI.getInstance().performCommand("chomskify 0");
-            CLI.getInstance().performCommand("print 1");
+            //CLI.getInstance().performCommand("print 1");
+            CLI.getInstance().performCommand("cyk 1 a");
+            CLI.getInstance().performCommand("cyk 1 babaaa");
+            CLI.getInstance().performCommand("cyk 1 abaababaaa");
 
         } catch (Exception e) {
             ErrorLogger.log(e);

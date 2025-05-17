@@ -16,6 +16,7 @@ public class CLI {
         commandMap.put("close", CommandType.CLOSE);
         commandMap.put("print", CommandType.PRINT);
         commandMap.put("chomskify", CommandType.CHOMSKIFY);
+        commandMap.put("cyk", CommandType.CYK);
         //put all future commands here
     }
 

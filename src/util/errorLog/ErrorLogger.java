@@ -8,7 +8,7 @@ import java.util.Calendar;
 public class ErrorLogger {
     public static void log(Exception e) {
         try {
-            System.out.println("Error has occured");
+            System.out.println("Error has occurred: " + e.getMessage());
             FileWriter errorWriter = new FileWriter("./LocalErrors.txt", true);
             errorWriter.write("[" + Calendar.getInstance().getTime() +"] " + e.getMessage() + "\n");
             errorWriter.close();
