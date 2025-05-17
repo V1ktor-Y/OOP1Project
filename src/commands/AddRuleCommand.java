@@ -20,6 +20,7 @@ public class AddRuleCommand implements Command {
         Grammar grammar = GrammarMap.getInstance().getGrammarByID(id);
         if(grammar == null) throw new GrammarNotFoundException("Failed to find grammar with id: " + id);
         grammar.addRule(new Rule(rule));
+        System.out.println("Added rule " + rule);
     }
 
     @Override

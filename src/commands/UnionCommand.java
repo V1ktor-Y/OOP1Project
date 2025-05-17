@@ -18,8 +18,6 @@ public class UnionCommand implements Command {
         int id1 = Integer.parseInt(keyWords[0]);
         int id2 = Integer.parseInt(keyWords[1]);
 
-        if(id1 == id2)throw new CommandContextException("id1 must be different from id2");
-
         Grammar grammar1 = GrammarMap.getInstance().getGrammarByID(id1);
         if(grammar1 == null) throw new GrammarNotFoundException("Could not find grammar with id " + id1);
 

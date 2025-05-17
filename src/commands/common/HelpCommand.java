@@ -9,12 +9,12 @@ import java.util.Map;
 public class HelpCommand implements Command {
     @Override
     public void performCommand(String context) throws Exception {
-        Map<String, CommandType>  commandMap = CLI.getInstance().getCommandMap();
+        Map<CommandType, Command>  commandMap = CLI.getInstance().getCommandMap();
         StringBuilder sb = new StringBuilder();
 
-        for(Map.Entry<String, CommandType> entry: commandMap.entrySet()){
+        for(Map.Entry<CommandType, Command> entry: commandMap.entrySet()){
 
-            sb.append(entry.getValue().getCommand().getDesc());
+            sb.append(entry.getValue().getDesc());
             sb.append("\n\n");
 
         }

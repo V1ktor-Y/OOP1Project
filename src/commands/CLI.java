@@ -1,23 +1,37 @@
 package commands;
 
+import commands.common.*;
+import commands.*;
 import exceptions.CommandNotFoundException;
-import util.errorLog.ErrorLogger;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class CLI {
-    private final Map<String,CommandType> commandMap = new HashMap<>();
+    private static final Map<CommandType,Command> commandMap = new HashMap<>();
     private static CLI instance;
 
     private CLI() {
-        commandMap.put("exit", CommandType.EXIT);
-        commandMap.put("open", CommandType.OPEN);
-        commandMap.put("close", CommandType.CLOSE);
-        commandMap.put("print", CommandType.PRINT);
-        commandMap.put("chomskify", CommandType.CHOMSKIFY);
-        commandMap.put("cyk", CommandType.CYK);
         //put all future commands here
+        //Common
+        commandMap.put(CommandType.CLOSE,new CloseCommand());
+        commandMap.put(CommandType.EXIT,new ExitCommand());
+        commandMap.put(CommandType.HELP,new HelpCommand());
+        commandMap.put(CommandType.OPEN,new OpenCommand());
+        commandMap.put(CommandType.SAVEAS,new SaveAsCommand());
+        commandMap.put(CommandType.SAVE,new SaveCommand());
+
+        commandMap.put(CommandType.ADDRULE,new AddRuleCommand());
+        commandMap.put(CommandType.CHOMSKIFY,new ChomskifyCommand());
+        commandMap.put(CommandType.CYK,new CYKCommand());
+        commandMap.put(CommandType.CHOMSKY,new ChomskyCommand());
+        commandMap.put(CommandType.CONCAT,new ConcatCommand());
+        commandMap.put(CommandType.ITER,new IterCommand());
+        commandMap.put(CommandType.LIST,new ListCommand());
+        commandMap.put(CommandType.PRINT,new PrintCommand());
+        commandMap.put(CommandType.REMOVERULE,new RemoveRuleCommand());
+        commandMap.put(CommandType.UNION,new UnionCommand());
+
     }
 
     public static CLI getInstance(){
@@ -27,31 +41,15 @@ public class CLI {
         return instance;
     }
 
-    public Map<String, CommandType> getCommandMap() {
+    public Map<CommandType, Command> getCommandMap() {
         return commandMap;
     }
 
-    public void performCommand(String input) throws CommandNotFoundException {
-        String[] parsedInput = input.split(" ", 2);
-        parsedInput[0] = parsedInput[0].toLowerCase();
-        CommandType result = commandMap.get(parsedInput[0]);
+    public void performCommand(CommandType type, String context) throws Exception {
+        Command result = commandMap.get(type);
         if(result == null) {
             throw new CommandNotFoundException("Command not found");
         }
-
-        if(parsedInput.length < 2){
-            try{
-                result.getCommand().performCommand("");
-            }catch (Exception e){
-                ErrorLogger.log(e);
-            }
-        }
-
-        try{
-            result.getCommand().performCommand(parsedInput[1]);
-        } catch (Exception e) {
-            ErrorLogger.log(e);
-        }
-
+        result.performCommand(context);
     }
 }

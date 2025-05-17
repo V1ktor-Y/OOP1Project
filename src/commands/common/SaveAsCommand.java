@@ -25,7 +25,7 @@ public class SaveAsCommand implements Command {
         String path = keyWords[1];
         WriteToFile.write(path,false, Parser.grammarToString(grammar));
         
-        System.out.println("Saved grammar with id " + id + "to file " + path);
+        System.out.println("Saved grammar with id " + id + " to file " + path);
     }
 
     @Override

@@ -25,7 +25,7 @@ public class SaveCommand implements Command {
         if(path.isEmpty()) throw new PathException("This grammar does not have a default path");
         WriteToFile.write(path,false, Parser.grammarToString(grammar));
 
-        System.out.println("Saved grammar with id " + id + "to file " + path);
+        System.out.println("Saved grammar with id " + id + " to file " + path);
     }
 
     @Override

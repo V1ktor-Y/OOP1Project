@@ -37,10 +37,6 @@ public class Grammar {
         return TERMINAL_SYMBOLS;
     }
 
-    public Alphabet getNonterminalSymbols() {
-        return NONTERMINAL_SYMBOLS;
-    }
-
     public Set<Rule> getRules(){
         return RULES;
     }
