@@ -16,7 +16,7 @@ public class EmptyCommand implements Command{
         Grammar grammar = GrammarMap.getInstance().getGrammarByID(id);
         if(grammar == null) throw new GrammarNotFoundException("Could not find grammar with id " + id);
 
-        if(grammar.getNonterminalSymbols().size() == 0 && grammar.getTerminalSymbols().size() == 0){
+        if(grammar.getNonTerminalSymbols().size() == 0 && grammar.getTerminalSymbols().size() == 0){
             System.out.println("Grammar is empty");
         }else{
             System.out.println("Grammar is not empty");

@@ -22,7 +22,7 @@ public class ChomskifyCommand implements Command {
         if (grammar == null) throw new GrammarNotFoundException("Could not find grammar with id " + id);
         Grammar newGrammar = new Grammar("");
 
-        newGrammar.getNonterminalSymbols().addAll(grammar.getNonterminalSymbols().getSymbols());
+        newGrammar.getNonTerminalSymbols().addAll(grammar.getNonTerminalSymbols().getSymbols());
         newGrammar.getTerminalSymbols().addAll(grammar.getTerminalSymbols().getSymbols());
 
         for (Rule r : grammar.getRules()) {
@@ -83,8 +83,8 @@ public class ChomskifyCommand implements Command {
 
     private char getNewNonTerminalChar(Alphabet terminals) throws ChomskyException {
         for (char c = 'A'; c <= 'Z'; c++) {
-            if (!terminals.contains(c)) {
-                terminals.addSymbol(c);
+            if (!terminals.contains(String.valueOf(c))) {
+                terminals.addSymbol(String.valueOf(c));
                 return c;
             }
         }

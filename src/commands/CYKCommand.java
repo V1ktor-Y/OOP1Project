@@ -26,10 +26,10 @@ public class CYKCommand implements Command {
         //Check if Chomsky
         for (Rule r : grammar.getRules()) {
             String rightSide = r.getRightSide();
-            if (rightSide.length() == 1 && grammar.getTerminalSymbols().contains(rightSide.charAt(0))) {
+            if (rightSide.length() == 1 && grammar.getTerminalSymbols().contains(rightSide)) {
                 continue;
             }
-            if (rightSide.length() == 2 && grammar.getNonterminalSymbols().contains(rightSide.charAt(0)) && grammar.getNonterminalSymbols().getSymbols().contains(rightSide.charAt(1))) {
+            if (rightSide.length() == 2 && grammar.getNonTerminalSymbols().contains(rightSide) && grammar.getNonTerminalSymbols().getSymbols().contains(rightSide.charAt(1))) {
                 continue;
             }
             throw new CYKException("Given grammar is not in CNF");

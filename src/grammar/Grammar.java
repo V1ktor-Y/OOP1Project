@@ -19,14 +19,42 @@ public class Grammar {
         NONTERMINAL_SYMBOLS = new Alphabet();
     }
 
-    public void addRule(Rule rule){
+    public void addRule(Rule rule) {
         RULES.add(rule);
     }
 
-    public boolean addSymbolToAlphabet(Character c) throws InvalidCharacterException {
-        if(Character.isLowerCase(c) || Character.isDigit(c)) return TERMINAL_SYMBOLS.addSymbol(c);
-        else if(Character.isUpperCase(c)) return NONTERMINAL_SYMBOLS.addSymbol(c);
-        else throw new InvalidCharacterException("Character is not a supported symbol");
+    public boolean addSymbolToAlphabet(String s) throws InvalidCharacterException {
+        boolean isNotMixed = true;
+
+        for (char c : s.toCharArray()) {
+            if (!Character.isLetter(c)) {
+                throw new InvalidCharacterException("Unsupported character " + c);
+            }
+        }
+
+        //check if all are terminals
+        for (char c : s.toCharArray()) {
+            if (Character.isUpperCase(c)) {
+                isNotMixed = false;
+                break;
+            }
+        }
+        // check if all are nonterminals
+        if (isNotMixed) {
+            return TERMINAL_SYMBOLS.addSymbol(s);
+        } else {
+            isNotMixed = true;
+            for (char c : s.toCharArray())
+                if (Character.isLowerCase(c) || Character.isDigit(c)) {
+                    isNotMixed = false;
+                    break;
+                }
+        }
+
+        if (isNotMixed) {
+            return NONTERMINAL_SYMBOLS.addSymbol(s);
+        } else
+            throw new InvalidCharacterException("All characters in string need to be either terminal(lower case and digits) or non-terminal(upper case)");
     }
 
     public Alphabet getNonTerminalSymbols() {
@@ -37,30 +65,31 @@ public class Grammar {
         return TERMINAL_SYMBOLS;
     }
 
-    public Set<Rule> getRules(){
+    public Set<Rule> getRules() {
         return RULES;
     }
 
     /**
      * Removes the Nth rule in a grammar, indexes begin at 0
+     *
      * @param n Which rule should be removed
      * @return Whether the rule was successfully removed
      */
     public boolean removeRule(int n) throws RuleNotFoundException {
         Rule elem = null;
         int counter = 0;
-        for(Rule rule : RULES){
-            if(counter == n) {
+        for (Rule rule : RULES) {
+            if (counter == n) {
                 elem = rule;
                 break;
             }
             counter++;
         }
-        if(elem == null) throw new RuleNotFoundException("Rule index not found");
+        if (elem == null) throw new RuleNotFoundException("Rule index not found");
         return RULES.remove(elem);
     }
 
-    public String getOriginalFile(){
+    public String getOriginalFile() {
         return ORIGINAL_FILE;
     }
 }

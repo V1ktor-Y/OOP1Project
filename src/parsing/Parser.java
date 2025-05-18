@@ -26,7 +26,7 @@ public class Parser {
         //Add every character from first line to grammar alphabet
         for(String character : lines[0].split(" ",0)){
             // if lines[0] is instead a rule, addSymbolToAlphabet will catch the -> and throw an error
-            grammar.addSymbolToAlphabet(character.charAt(0));
+            grammar.addSymbolToAlphabet(character);
         }
 
         //It's a lawless land out here
@@ -43,11 +43,11 @@ public class Parser {
     public static String grammarToString(Grammar grammar){
         StringBuilder sb = new StringBuilder();
 
-        for(Character c : grammar.getNonterminalSymbols().getSymbols()){
+        for(String c : grammar.getNonTerminalSymbols().getSymbols()){
             sb.append(c + " ");
         }
 
-        for(Character c : grammar.getTerminalSymbols().getSymbols()){
+        for(String c : grammar.getTerminalSymbols().getSymbols()){
             sb.append(c + " ");
         }
         sb.append(",\n");

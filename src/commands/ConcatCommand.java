@@ -28,10 +28,10 @@ public class ConcatCommand implements Command{
 
         //Add Alphabets from Grammar<id1>
         newGrammar.getTerminalSymbols().addAll(grammar1.getTerminalSymbols().getSymbols());
-        newGrammar.getNonterminalSymbols().addAll(grammar1.getNonterminalSymbols().getSymbols());
+        newGrammar.getNonTerminalSymbols().addAll(grammar1.getNonTerminalSymbols().getSymbols());
         //Add Alphabets from Grammar<id2>
         newGrammar.getTerminalSymbols().addAll(grammar2.getTerminalSymbols().getSymbols());
-        newGrammar.getNonterminalSymbols().addAll(grammar2.getNonterminalSymbols().getSymbols());
+        newGrammar.getNonTerminalSymbols().addAll(grammar2.getNonTerminalSymbols().getSymbols());
         //Add Rules from both grammars
         newGrammar.getRules().addAll(grammar1.getRules());
         newGrammar.getRules().addAll(grammar2.getRules());

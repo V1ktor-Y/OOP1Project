@@ -5,13 +5,13 @@ import java.util.Set;
 
 public class Alphabet {
     public static final char EPSILON = 'Є';
-    private Set<Character> symbols = new HashSet<>();
+    private Set<String> symbols = new HashSet<>();
 
-    public boolean addSymbol(Character c){
-        return symbols.add(c);
+    public boolean addSymbol(String s){
+        return symbols.add(s);
     }
 
-    public Set<Character> getSymbols() {
+    public Set<String> getSymbols() {
         return symbols;
     }
 
@@ -19,11 +19,11 @@ public class Alphabet {
         return symbols.size();
     }
 
-    public void addAll(Set<Character> characters){
-        symbols.addAll(characters);
+    public void addAll(Set<String> strings){
+        symbols.addAll(strings);
     }
 
-    public boolean contains(Character c){
-        return symbols.contains(c);
+    public boolean contains(String s){
+        return symbols.contains(s);
     }
 }

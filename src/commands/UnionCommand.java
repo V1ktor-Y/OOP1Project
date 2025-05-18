@@ -26,14 +26,14 @@ public class UnionCommand implements Command {
 
         Grammar newGrammar = new Grammar("");
 
-        for(Character c : grammar1.getTerminalSymbols().getSymbols()){
+        for(String c : grammar1.getTerminalSymbols().getSymbols()){
             if(grammar2.getTerminalSymbols().contains(c)){
                 newGrammar.getTerminalSymbols().addSymbol(c);
             }
         }
-        for(Character c : grammar1.getNonterminalSymbols().getSymbols()){
-            if(grammar2.getNonterminalSymbols().contains(c)){
-                newGrammar.getNonterminalSymbols().addSymbol(c);
+        for(String c : grammar1.getNonTerminalSymbols().getSymbols()){
+            if(grammar2.getNonTerminalSymbols().contains(c)){
+                newGrammar.getNonTerminalSymbols().addSymbol(c);
             }
         }
 

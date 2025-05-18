@@ -20,10 +20,10 @@ public class PrintCommand implements Command{
         StringBuilder sb = new StringBuilder("Grammar with id ").append(id).append("\n\n");
 
         sb.append("\tAlphabet: {");
-        for (char c : grammar.getTerminalSymbols().getSymbols()){
+        for (String c : grammar.getTerminalSymbols().getSymbols()){
             sb.append(c).append(", ");
         }
-        for (char c : grammar.getNonterminalSymbols().getSymbols()){
+        for (String c : grammar.getNonTerminalSymbols().getSymbols()){
             sb.append(c).append(", ");
         }
         sb.append("}\n\n");
@@ -35,7 +35,7 @@ public class PrintCommand implements Command{
         }
         sb.append("\n");
 
-        sb.append("\tOriginal file: ").append(grammar.getOriginalFile());
+        sb.append("\tOriginal file: ").append(grammar.getOriginalFile().isBlank() ? "N/A" : grammar.getOriginalFile());
         System.out.println(sb.toString());
     }
 
