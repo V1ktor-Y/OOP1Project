@@ -19,10 +19,12 @@ public class PrintCommand implements Command{
 
         StringBuilder sb = new StringBuilder("Grammar with id ").append(id).append("\n\n");
 
-        sb.append("\tAlphabet: {");
+        sb.append("\tTerminal Symbols: {");
         for (String c : grammar.getTerminalSymbols().getSymbols()){
             sb.append(c).append(", ");
         }
+        sb.append("}\n\tNon-terminal Symbols: {");
+
         for (String c : grammar.getNonTerminalSymbols().getSymbols()){
             sb.append(c).append(", ");
         }

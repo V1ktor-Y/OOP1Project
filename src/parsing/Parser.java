@@ -6,6 +6,8 @@ import grammar.Grammar;
 import grammar.Rule;
 import util.readFromFile.ReadFromFile;
 
+import java.util.Arrays;
+
 public class Parser {
     /**
      * Input needs to contain at least an alphabet
@@ -19,8 +21,9 @@ public class Parser {
         Grammar grammar = new Grammar(path);
 
         //0 removes trailing empty strings
-        String[] lines = text.split(",\n",0);
-
+        String[] lines = text.split(",\\s*",0);
+        System.out.println(Arrays.toString(lines));
+        System.out.println(lines.length);
         if(lines.length < 1) throw new SerializationException("Could not find grammar");
 
         //Add every character from first line to grammar alphabet

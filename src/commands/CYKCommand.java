@@ -29,7 +29,7 @@ public class CYKCommand implements Command {
             if (rightSide.length() == 1 && grammar.getTerminalSymbols().contains(rightSide)) {
                 continue;
             }
-            if (rightSide.length() == 2 && grammar.getNonTerminalSymbols().contains(rightSide) && grammar.getNonTerminalSymbols().getSymbols().contains(rightSide.charAt(1))) {
+            if (rightSide.length() == 2 && grammar.getNonTerminalSymbols().contains(String.valueOf(rightSide.charAt(0))) && grammar.getNonTerminalSymbols().getSymbols().contains(String.valueOf(rightSide.charAt(1)))) {
                 continue;
             }
             throw new CYKException("Given grammar is not in CNF");

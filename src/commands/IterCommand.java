@@ -33,7 +33,7 @@ public class IterCommand implements Command{
 
         for(String c1 : grammar.getTerminalSymbols().getSymbols()){
             for(String c2 : grammar.getTerminalSymbols().getSymbols()){
-                newGrammar.getNonTerminalSymbols().addSymbol(c1 + c2);
+                newGrammar.getTerminalSymbols().addSymbol(c1 + c2);
             }
         }
         for(String c1 : grammar.getNonTerminalSymbols().getSymbols()){
@@ -43,7 +43,7 @@ public class IterCommand implements Command{
         }
 
         GrammarMap.getInstance().addGrammar(newGrammar);
-        System.out.println("Grammar iterated. Created new grammar with id " + GrammarMap.getInstance().getIdCounter());
+        System.out.println("Grammar iterated. Created new grammar with id " + (GrammarMap.getInstance().getIdCounter() - 1));
     }
 
     @Override
