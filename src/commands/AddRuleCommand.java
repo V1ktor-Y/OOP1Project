@@ -7,6 +7,11 @@ import grammar.GrammarMap;
 import grammar.Rule;
 
 public class AddRuleCommand implements Command {
+    /**
+     * addrule id rule - Adds given rule to given grammar
+     * @param context
+     * @throws Exception
+     */
     @Override
     public void performCommand(String context) throws Exception {
         if (context.isEmpty()) throw new CommandContextException("Empty command context");

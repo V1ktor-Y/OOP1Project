@@ -10,6 +10,11 @@ import grammar.Rule;
 import java.util.*;
 
 public class CYKCommand implements Command {
+    /**
+     * CYK id word - Checks if given word is in given grammar using CYK algorithm
+     * @param context
+     * @throws Exception
+     */
     @Override
     public void performCommand(String context) throws Exception {
         if (context.isEmpty()) throw new CommandContextException("Empty command context");
@@ -94,8 +99,7 @@ public class CYKCommand implements Command {
             }
         }
 
-        // If word can be formed by rules
-        // of given grammar
+        // If word can be formed by rules of given grammar
         if (T.get(0) != null && T.get(0).get(n - 1) != null
                 && T.get(0).get(n - 1).size() != 0)
             System.out.println("True");

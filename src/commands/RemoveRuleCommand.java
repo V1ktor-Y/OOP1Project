@@ -8,6 +8,11 @@ import grammar.GrammarMap;
 import util.errorLog.ErrorLogger;
 
 public class RemoveRuleCommand implements Command {
+    /**
+     * removerule id rule id - Removes given rule from given grammar
+     * @param context
+     * @throws Exception
+     */
     @Override
     public void performCommand(String context) throws Exception {
         if (context.isEmpty()) throw new CommandContextException("Empty command context");
@@ -26,6 +31,7 @@ public class RemoveRuleCommand implements Command {
         }catch (RuleNotFoundException e){
             ErrorLogger.log(e);
         }
+        System.out.println("Removed rule " + ruleId);
     }
 
     @Override

@@ -8,6 +8,11 @@ import grammar.Rule;
 
 public class ChomskyCommand implements Command
 {
+    /**
+     * chomsky id - Checks if given grammar is in Chomsky Normal Form
+     * @param context
+     * @throws Exception
+     */
     @Override
     public void performCommand(String context) throws Exception {
         if (context.isEmpty()) throw new CommandContextException("Empty command context");
@@ -29,6 +34,8 @@ public class ChomskyCommand implements Command
             System.out.println("Grammar is not in Chomsky Normal Form");
             return;
         }
+        System.out.println("Grammar is in Chomsky Normal Form");
+
     }
     @Override
     public String getDesc() {

@@ -2,6 +2,7 @@ package grammar;
 
 import exceptions.InvalidCharacterException;
 import exceptions.RuleNotFoundException;
+import util.errorLog.ErrorLogger;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -21,8 +22,22 @@ public class Grammar {
 
     public void addRule(Rule rule) {
         RULES.add(rule);
+        try{
+            addSymbolToAlphabet(rule.getLeftSide());
+            addSymbolToAlphabet(rule.getRightSide());
+        } catch (InvalidCharacterException e) {
+            ErrorLogger.log(e);
+        }
     }
 
+    /**
+     * Adds symbol to the alphabet of the grammar.
+     * Automatically adds it to terminal symbols if its lowercase or a digit.
+     * Automatically adds it to non-terminal symbols if its uppercase.
+     * @param s
+     * @return true if the symbol was not already in set
+     * @throws InvalidCharacterException
+     */
     public boolean addSymbolToAlphabet(String s) throws InvalidCharacterException {
         boolean isNotMixed = true;
 
@@ -53,8 +68,9 @@ public class Grammar {
 
         if (isNotMixed) {
             return NONTERMINAL_SYMBOLS.addSymbol(s);
-        } else
-            throw new InvalidCharacterException("All characters in string need to be either terminal(lower case and digits) or non-terminal(upper case)");
+        }else{
+            return false;
+        }
     }
 
     public Alphabet getNonTerminalSymbols() {

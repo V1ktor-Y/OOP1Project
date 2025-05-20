@@ -10,6 +10,10 @@ import java.util.Scanner;
 public class ProgramManager {
     private static final Scanner SCANNER = new Scanner(System.in);
 
+    /**
+     * Main program loop.
+     * Gets user input and checks if the first word matches any command.
+     */
     public static void run() {
         System.out.print(">>>");
         String[] input = SCANNER.nextLine().split(" ", 2);

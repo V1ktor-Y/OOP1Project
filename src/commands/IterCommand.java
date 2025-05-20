@@ -8,6 +8,11 @@ import grammar.GrammarMap;
 import grammar.Rule;
 
 public class IterCommand implements Command{
+    /**
+     * iter id - Iterates over given grammar and creates a new one
+     * @param context
+     * @throws Exception
+     */
     @Override
     public void performCommand(String context) throws Exception {
         if (context.isEmpty()) throw new CommandContextException("Empty command context");

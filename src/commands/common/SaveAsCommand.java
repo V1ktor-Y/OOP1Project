@@ -9,6 +9,11 @@ import parsing.Parser;
 import util.writeToFile.WriteToFile;
 
 public class SaveAsCommand implements Command {
+    /**
+     * saveas id filename - Saves grammar with he given id to the given path
+     * @param context
+     * @throws Exception
+     */
     @Override
     public void performCommand(String context) throws Exception {
         if (context.isEmpty()) throw new CommandContextException("Empty command context");

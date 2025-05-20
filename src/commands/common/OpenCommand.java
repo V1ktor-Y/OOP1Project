@@ -8,6 +8,11 @@ import util.errorLog.ErrorLogger;
 
 
 public class OpenCommand implements Command {
+    /**
+     * open filename - Reads a grammar from a .cfg file and adds it to the GrammarMap singleton's map
+     * @param context
+     * @throws CommandContextException
+     */
     @Override
     public void performCommand(String context) throws CommandContextException {
         if (context.isEmpty()) throw new CommandContextException("Empty command context");

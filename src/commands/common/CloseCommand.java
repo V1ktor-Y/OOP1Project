@@ -6,6 +6,12 @@ import exceptions.GrammarNotFoundException;
 import grammar.GrammarMap;
 
 public class CloseCommand implements Command {
+    /**
+     * close id - Removes the grammar with the given key(id) from the grammar map
+     * @param context
+     * @throws GrammarNotFoundException
+     * @throws CommandContextException
+     */
     @Override
     public void performCommand(String context) throws GrammarNotFoundException, CommandContextException {
         if (context.isEmpty()) throw new CommandContextException("Empty command context");

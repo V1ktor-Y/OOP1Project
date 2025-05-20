@@ -7,6 +7,11 @@ import grammar.GrammarMap;
 
 public class ConcatCommand implements Command{
 
+    /**
+     * concat id1 id2 - Gets the concatenation between two grammars and saves it to the grammar map
+     * @param context
+     * @throws Exception
+     */
     @Override
     public void performCommand(String context) throws Exception {
         if (context.isEmpty()) throw new CommandContextException("Empty command context");
@@ -42,6 +47,6 @@ public class ConcatCommand implements Command{
 
     @Override
     public String getDesc() {
-        return "concat <id1> <id2> - Gets the concatination between two grammars and saves it to the grammar map";
+        return "concat <id1> <id2> - Gets the concatenation between two grammars and saves it to the grammar map";
     }
 }

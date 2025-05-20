@@ -7,6 +7,11 @@ import grammar.GrammarMap;
 import grammar.Rule;
 
 public class PrintCommand implements Command{
+    /**
+     * print id - Prints given command to console
+     * @param context
+     * @throws Exception
+     */
     @Override
     public void performCommand(String context) throws Exception {
         if (context.isEmpty()) throw new CommandContextException("Empty command context");

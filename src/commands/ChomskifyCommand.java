@@ -11,6 +11,11 @@ import grammar.Rule;
 import java.util.Objects;
 
 public class ChomskifyCommand implements Command {
+    /**
+     * chomskify id - Converts given grammar into Chomsky Normal Form and saves it to the grammar map
+     * @param context
+     * @throws Exception
+     */
     @Override
     public void performCommand(String context) throws Exception {
         if (context.isEmpty()) throw new CommandContextException("Empty command context");

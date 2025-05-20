@@ -3,6 +3,10 @@ package commands.common;
 import commands.Command;
 
 public class ExitCommand implements Command {
+    /**
+     * exit - Exits the program
+     * @param context
+     */
     @Override
     public void performCommand(String context) {
         System.out.println("Exiting");

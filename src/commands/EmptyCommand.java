@@ -6,6 +6,11 @@ import grammar.Grammar;
 import grammar.GrammarMap;
 
 public class EmptyCommand implements Command{
+    /**
+     * empty id - Checks if the alphabet of given command is empty
+     * @param context
+     * @throws Exception
+     */
     @Override
     public void performCommand(String context) throws Exception {
         if (context.isEmpty()) throw new CommandContextException("Empty command context");

@@ -22,8 +22,6 @@ public class Parser {
 
         //0 removes trailing empty strings
         String[] lines = text.split(",\\s*",0);
-        System.out.println(Arrays.toString(lines));
-        System.out.println(lines.length);
         if(lines.length < 1) throw new SerializationException("Could not find grammar");
 
         //Add every character from first line to grammar alphabet
@@ -43,6 +41,11 @@ public class Parser {
         return grammar;
     }
 
+    /**
+     * Transform given grammar to string, ready to save to a file
+     * @param grammar
+     * @return the given grammar as a string
+     */
     public static String grammarToString(Grammar grammar){
         StringBuilder sb = new StringBuilder();
 

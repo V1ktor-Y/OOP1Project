@@ -7,6 +7,11 @@ import grammar.GrammarMap;
 import grammar.Rule;
 
 public class UnionCommand implements Command {
+    /**
+     * union id1 id2 - Gets the union between two grammars and saves it to the grammar map
+     * @param context
+     * @throws Exception
+     */
     @Override
     public void performCommand(String context) throws Exception {
         if (context.isEmpty()) throw new CommandContextException("Empty command context");

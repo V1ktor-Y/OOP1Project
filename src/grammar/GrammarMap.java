@@ -18,6 +18,11 @@ public class GrammarMap {
 
     private GrammarMap(){}
 
+    /**
+     * Adds grammar to the map
+     * @param grammar
+     * @return id of the added grammar
+     */
     public int addGrammar(Grammar grammar){
         grammarMap.put(idCounter++, grammar);
         return idCounter - 1;
@@ -44,6 +49,11 @@ public class GrammarMap {
         return sb.toString();
     }
 
+    /**
+     * Get the grammar with given id
+     * @param id
+     * @return grammar
+     */
     public Grammar getGrammarByID(int id){
         return grammarMap.get(id);
     }

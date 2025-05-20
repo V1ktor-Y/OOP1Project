@@ -7,6 +7,11 @@ import commands.CommandType;
 import java.util.Map;
 
 public class HelpCommand implements Command {
+    /**
+     * help - Prints the description of every command
+     * @param context
+     * @throws Exception
+     */
     @Override
     public void performCommand(String context) throws Exception {
         Map<CommandType, Command>  commandMap = CLI.getInstance().getCommandMap();

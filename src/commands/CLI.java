@@ -23,8 +23,9 @@ public class CLI {
 
         commandMap.put(CommandType.ADDRULE,new AddRuleCommand());
         commandMap.put(CommandType.CHOMSKIFY,new ChomskifyCommand());
-        commandMap.put(CommandType.CYK,new CYKCommand());
         commandMap.put(CommandType.CHOMSKY,new ChomskyCommand());
+        commandMap.put(CommandType.CYK,new CYKCommand());
+        commandMap.put(CommandType.EMPTY,new EmptyCommand());
         commandMap.put(CommandType.CONCAT,new ConcatCommand());
         commandMap.put(CommandType.ITER,new IterCommand());
         commandMap.put(CommandType.LIST,new ListCommand());
@@ -45,6 +46,12 @@ public class CLI {
         return commandMap;
     }
 
+    /**
+     * performs command of the given type, while giving it the given context
+     * @param type
+     * @param context
+     * @throws Exception
+     */
     public void performCommand(CommandType type, String context) throws Exception {
         Command result = commandMap.get(type);
         if(result == null) {

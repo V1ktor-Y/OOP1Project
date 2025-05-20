@@ -6,6 +6,11 @@ import grammar.GrammarMap;
 import java.util.Map;
 
 public class ListCommand implements Command {
+    /**
+     * list - List every loaded grammar's id
+     * @param context
+     * @throws Exception
+     */
     @Override
     public void performCommand(String context) throws Exception {
         Map<Integer, Grammar> grammarMap = GrammarMap.getInstance().getGrammarMap();
