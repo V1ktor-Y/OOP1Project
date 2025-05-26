@@ -4,8 +4,9 @@ import commands.Command;
 import exceptions.CommandContextException;
 import exceptions.GrammarNotFoundException;
 import grammar.GrammarMap;
+import parsing.ContextParser;
 
-public class CloseCommand implements Command {
+public class CloseCommand implements Command, ContextParser {
     /**
      * close id - Removes the grammar with the given key(id) from the grammar map
      * @param context
@@ -14,8 +15,7 @@ public class CloseCommand implements Command {
      */
     @Override
     public void performCommand(String context) throws GrammarNotFoundException, CommandContextException {
-        if (context.isEmpty()) throw new CommandContextException("Empty command context");
-
+        parseContext(context);
         //context is grammar ID
         int id = Integer.parseInt(context);
 
@@ -29,5 +29,12 @@ public class CloseCommand implements Command {
     @Override
     public String getDesc() {
         return "close <id> - Removes the grammar with the given key(id) from the grammar map";
+    }
+
+    @Override
+    public String[] parseContext(String context) throws CommandContextException{
+        if (context.isEmpty()) throw new CommandContextException("Empty command context");
+
+        return null;
     }
 }

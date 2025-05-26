@@ -5,8 +5,9 @@ import exceptions.GrammarNotFoundException;
 import grammar.Grammar;
 import grammar.GrammarMap;
 import grammar.Rule;
+import parsing.ContextParser;
 
-public class AddRuleCommand implements Command {
+public class AddRuleCommand implements Command, ContextParser {
     /**
      * addrule id rule - Adds given rule to given grammar
      * @param context
@@ -14,11 +15,8 @@ public class AddRuleCommand implements Command {
      */
     @Override
     public void performCommand(String context) throws Exception {
-        if (context.isEmpty()) throw new CommandContextException("Empty command context");
 
-        String[] keyWords = context.split(" ", 2);
-        if(keyWords.length < 2) throw new CommandContextException("Not enough context given");
-
+        String[] keyWords = parseContext(context);
         int id = Integer.parseInt(keyWords[0]);
         String rule = keyWords[1];
 
@@ -31,5 +29,14 @@ public class AddRuleCommand implements Command {
     @Override
     public String getDesc() {
         return "addrule <id> <rule> - Adds given rule to given grammar";
+    }
+
+    @Override
+    public String[] parseContext(String context) throws CommandContextException {
+        if (context.isEmpty()) throw new CommandContextException("Empty command context");
+
+        String[] keyWords = context.split(" ", 2);
+        if(keyWords.length < 2) throw new CommandContextException("Not enough context given");
+        return  keyWords;
     }
 }

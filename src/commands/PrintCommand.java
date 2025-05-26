@@ -5,8 +5,9 @@ import exceptions.GrammarNotFoundException;
 import grammar.Grammar;
 import grammar.GrammarMap;
 import grammar.Rule;
+import parsing.ContextParser;
 
-public class PrintCommand implements Command{
+public class PrintCommand implements Command, ContextParser {
     /**
      * print id - Prints given command to console
      * @param context
@@ -14,7 +15,6 @@ public class PrintCommand implements Command{
      */
     @Override
     public void performCommand(String context) throws Exception {
-        if (context.isEmpty()) throw new CommandContextException("Empty command context");
 
         int id = Integer.parseInt(context);
         Grammar grammar;
@@ -22,6 +22,11 @@ public class PrintCommand implements Command{
         if ((grammar = GrammarMap.getInstance().getGrammarByID(id)) == null)
             throw new GrammarNotFoundException("Couldn't find grammar with given id");
 
+        StringBuilder sb = getGrammarString(id, grammar);
+        System.out.println(sb.toString());
+    }
+
+    private StringBuilder getGrammarString(int id, Grammar grammar) {
         StringBuilder sb = new StringBuilder("Grammar with id ").append(id).append("\n\n");
 
         sb.append("\tTerminal Symbols: {");
@@ -43,11 +48,17 @@ public class PrintCommand implements Command{
         sb.append("\n");
 
         sb.append("\tOriginal file: ").append(grammar.getOriginalFile().isBlank() ? "N/A" : grammar.getOriginalFile());
-        System.out.println(sb.toString());
+        return sb;
     }
 
     @Override
     public String getDesc() {
         return "print <id> - Prints given command to console";
+    }
+
+    @Override
+    public String[] parseContext(String context) throws CommandContextException {
+        if (context.isEmpty()) throw new CommandContextException("Empty command context");
+        return null;
     }
 }

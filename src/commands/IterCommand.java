@@ -6,8 +6,9 @@ import grammar.Alphabet;
 import grammar.Grammar;
 import grammar.GrammarMap;
 import grammar.Rule;
+import parsing.ContextParser;
 
-public class IterCommand implements Command{
+public class IterCommand implements Command, ContextParser {
     /**
      * iter id - Iterates over given grammar and creates a new one
      * @param context
@@ -15,8 +16,7 @@ public class IterCommand implements Command{
      */
     @Override
     public void performCommand(String context) throws Exception {
-        if (context.isEmpty()) throw new CommandContextException("Empty command context");
-
+        parseContext(context);
         //context is grammar ID
         int id = Integer.parseInt(context);
 
@@ -25,17 +25,15 @@ public class IterCommand implements Command{
 
         Grammar newGrammar = new Grammar("");
 
-        newGrammar.getNonTerminalSymbols().addAll(grammar.getNonTerminalSymbols().getSymbols());
-        newGrammar.getNonTerminalSymbols().addAll(grammar.getNonTerminalSymbols().getSymbols());
-        newGrammar.getTerminalSymbols().addAll(grammar.getTerminalSymbols().getSymbols());
-        newGrammar.getTerminalSymbols().addAll(grammar.getTerminalSymbols().getSymbols());
-        for(Rule rule : grammar.getRules()){
-            newGrammar.addRule(rule);
-        }
+        addOld(newGrammar, grammar);
 
-        newGrammar.getNonTerminalSymbols().addSymbol(String.valueOf(Alphabet.EPSILON));
-        newGrammar.getTerminalSymbols().addSymbol(String.valueOf(Alphabet.EPSILON));
+        iterateSymbols(grammar, newGrammar);
 
+        GrammarMap.getInstance().addGrammar(newGrammar);
+        System.out.println("Grammar iterated. Created new grammar with id " + (GrammarMap.getInstance().getIdCounter() - 1));
+    }
+
+    private void iterateSymbols(Grammar grammar, Grammar newGrammar) {
         for(String c1 : grammar.getTerminalSymbols().getSymbols()){
             for(String c2 : grammar.getTerminalSymbols().getSymbols()){
                 newGrammar.getTerminalSymbols().addSymbol(c1 + c2);
@@ -46,13 +44,29 @@ public class IterCommand implements Command{
                 newGrammar.getNonTerminalSymbols().addSymbol(c1 + c2);
             }
         }
+    }
 
-        GrammarMap.getInstance().addGrammar(newGrammar);
-        System.out.println("Grammar iterated. Created new grammar with id " + (GrammarMap.getInstance().getIdCounter() - 1));
+    private void addOld(Grammar newGrammar, Grammar grammar) {
+        newGrammar.getNonTerminalSymbols().addAll(grammar.getNonTerminalSymbols().getSymbols());
+        newGrammar.getNonTerminalSymbols().addAll(grammar.getNonTerminalSymbols().getSymbols());
+        newGrammar.getTerminalSymbols().addAll(grammar.getTerminalSymbols().getSymbols());
+        newGrammar.getTerminalSymbols().addAll(grammar.getTerminalSymbols().getSymbols());
+        for(Rule rule : grammar.getRules()){
+            newGrammar.addRule(rule);
+        }
+
+        newGrammar.getNonTerminalSymbols().addSymbol(String.valueOf(Alphabet.EPSILON));
+        newGrammar.getTerminalSymbols().addSymbol(String.valueOf(Alphabet.EPSILON));
     }
 
     @Override
     public String getDesc() {
         return "iter <id> - Iterates over given grammar and creates a new one";
+    }
+
+    @Override
+    public String[] parseContext(String context) throws CommandContextException {
+        if (context.isEmpty()) throw new CommandContextException("Empty command context");
+        return null;
     }
 }

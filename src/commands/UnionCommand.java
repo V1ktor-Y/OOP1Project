@@ -5,8 +5,9 @@ import exceptions.GrammarNotFoundException;
 import grammar.Grammar;
 import grammar.GrammarMap;
 import grammar.Rule;
+import parsing.ContextParser;
 
-public class UnionCommand implements Command {
+public class UnionCommand implements Command, ContextParser {
     /**
      * union id1 id2 - Gets the union between two grammars and saves it to the grammar map
      * @param context
@@ -14,11 +15,8 @@ public class UnionCommand implements Command {
      */
     @Override
     public void performCommand(String context) throws Exception {
-        if (context.isEmpty()) throw new CommandContextException("Empty command context");
 
-        String[] keyWords = context.split(" ", 2);
-        if(keyWords.length < 2) throw new CommandContextException("Not enough context given");
-
+        String[] keyWords = parseContext(context);
         //context is grammar ID
         int id1 = Integer.parseInt(keyWords[0]);
         int id2 = Integer.parseInt(keyWords[1]);
@@ -31,22 +29,15 @@ public class UnionCommand implements Command {
 
         Grammar newGrammar = new Grammar("");
 
-        for(String c : grammar1.getTerminalSymbols().getSymbols()){
-            if(grammar2.getTerminalSymbols().contains(c)){
-                newGrammar.getTerminalSymbols().addSymbol(c);
-            }
-        }
-        for(String c : grammar1.getNonTerminalSymbols().getSymbols()){
-            if(grammar2.getNonTerminalSymbols().contains(c)){
-                newGrammar.getNonTerminalSymbols().addSymbol(c);
-            }
-        }
+        newGrammar.getNonTerminalSymbols().addAll(grammar1.getNonTerminalSymbols().getSymbols());
+        newGrammar.getNonTerminalSymbols().getSymbols().retainAll(grammar2.getNonTerminalSymbols().getSymbols());
+        newGrammar.getTerminalSymbols().addAll(grammar1.getTerminalSymbols().getSymbols());
+        newGrammar.getTerminalSymbols().getSymbols().retainAll(grammar2.getTerminalSymbols().getSymbols());
 
         for(Rule r : grammar1.getRules()){
-            if(grammar2.getRules().contains(r)){
                 newGrammar.addRule(r);
-            }
         }
+        newGrammar.getRules().retainAll(grammar2.getRules());
 
 
         System.out.println("New grammar saved with id - " + GrammarMap.getInstance().addGrammar(newGrammar));
@@ -56,5 +47,14 @@ public class UnionCommand implements Command {
     @Override
     public String getDesc() {
         return "union <id1> <id2> - Gets the union between two grammars and saves it to the grammar map";
+    }
+
+    @Override
+    public String[] parseContext(String context) throws CommandContextException {
+        if (context.isEmpty()) throw new CommandContextException("Empty command context");
+
+        String[] keyWords = context.split(" ", 2);
+        if(keyWords.length < 2) throw new CommandContextException("Not enough context given");
+        return  keyWords;
     }
 }

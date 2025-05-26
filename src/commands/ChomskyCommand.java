@@ -5,8 +5,9 @@ import exceptions.GrammarNotFoundException;
 import grammar.Grammar;
 import grammar.GrammarMap;
 import grammar.Rule;
+import parsing.ContextParser;
 
-public class ChomskyCommand implements Command
+public class ChomskyCommand implements Command, ContextParser
 {
     /**
      * chomsky id - Checks if given grammar is in Chomsky Normal Form
@@ -15,8 +16,7 @@ public class ChomskyCommand implements Command
      */
     @Override
     public void performCommand(String context) throws Exception {
-        if (context.isEmpty()) throw new CommandContextException("Empty command context");
-
+        parseContext(context);
         //context is grammar ID
         int id = Integer.parseInt(context);
 
@@ -42,4 +42,9 @@ public class ChomskyCommand implements Command
         return "chomsky <id> - Checks if given grammar is in Chomsky Normal Form";
     }
 
+    @Override
+    public String[] parseContext(String context) throws CommandContextException {
+        if (context.isEmpty()) throw new CommandContextException("Empty command context");
+        return  null;
+    }
 }

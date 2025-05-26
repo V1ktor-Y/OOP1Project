@@ -4,8 +4,9 @@ import exceptions.CommandContextException;
 import exceptions.GrammarNotFoundException;
 import grammar.Grammar;
 import grammar.GrammarMap;
+import parsing.ContextParser;
 
-public class ConcatCommand implements Command{
+public class ConcatCommand implements Command, ContextParser {
 
     /**
      * concat id1 id2 - Gets the concatenation between two grammars and saves it to the grammar map
@@ -14,10 +15,7 @@ public class ConcatCommand implements Command{
      */
     @Override
     public void performCommand(String context) throws Exception {
-        if (context.isEmpty()) throw new CommandContextException("Empty command context");
-
-        String[] keyWords = context.split(" ", 2);
-        if(keyWords.length < 2) throw new CommandContextException("Not enough context given");
+        String[] keyWords = parseContext(context);
 
         //context is grammar ID
         int id1 = Integer.parseInt(keyWords[0]);
@@ -48,5 +46,14 @@ public class ConcatCommand implements Command{
     @Override
     public String getDesc() {
         return "concat <id1> <id2> - Gets the concatenation between two grammars and saves it to the grammar map";
+    }
+
+    @Override
+    public String[] parseContext(String context) throws CommandContextException {
+        if (context.isEmpty()) throw new CommandContextException("Empty command context");
+
+        String[] keyWords = context.split(" ", 2);
+        if(keyWords.length < 2) throw new CommandContextException("Not enough context given");
+        return  keyWords;
     }
 }

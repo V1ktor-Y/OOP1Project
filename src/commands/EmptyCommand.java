@@ -4,8 +4,9 @@ import exceptions.CommandContextException;
 import exceptions.GrammarNotFoundException;
 import grammar.Grammar;
 import grammar.GrammarMap;
+import parsing.ContextParser;
 
-public class EmptyCommand implements Command{
+public class EmptyCommand implements Command, ContextParser {
     /**
      * empty id - Checks if the alphabet of given command is empty
      * @param context
@@ -13,8 +14,8 @@ public class EmptyCommand implements Command{
      */
     @Override
     public void performCommand(String context) throws Exception {
-        if (context.isEmpty()) throw new CommandContextException("Empty command context");
 
+        parseContext(context);
         //context is grammar ID
         int id = Integer.parseInt(context);
 
@@ -31,5 +32,11 @@ public class EmptyCommand implements Command{
     @Override
     public String getDesc() {
         return "empty <id> - Checks if the alphabet of given command is empty";
+    }
+
+    @Override
+    public String[] parseContext(String context) throws CommandContextException {
+        if (context.isEmpty()) throw new CommandContextException("Empty command context");
+        return null;
     }
 }

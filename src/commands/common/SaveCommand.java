@@ -6,10 +6,11 @@ import exceptions.GrammarNotFoundException;
 import exceptions.PathException;
 import grammar.Grammar;
 import grammar.GrammarMap;
+import parsing.ContextParser;
 import parsing.Parser;
 import util.writeToFile.WriteToFile;
 
-public class SaveCommand implements Command {
+public class SaveCommand implements Command, ContextParser {
     /**
      * save id - Saves grammar with the given id to its original file
      * @param context
@@ -17,8 +18,8 @@ public class SaveCommand implements Command {
      */
     @Override
     public void performCommand(String context) throws Exception {
-        if (context.isEmpty()) throw new CommandContextException("Empty command context");
 
+        parseContext(context);
         //context is grammar ID
         int id = Integer.parseInt(context);
 
@@ -36,5 +37,11 @@ public class SaveCommand implements Command {
     @Override
     public String getDesc() {
         return "save <id> - Saves grammar with the given id to its original file";
+    }
+
+    @Override
+    public String[] parseContext(String context) throws CommandContextException {
+        if (context.isEmpty()) throw new CommandContextException("Empty command context");
+        return null;
     }
 }
